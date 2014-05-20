@@ -46,4 +46,11 @@ Checkbox.prototype.showLabel = new Gaffa.Property(function(view, value){
     view.checkboxLabel.style.display = value === false ? 'none' : null;
 });
 
+Checkbox.prototype.enabled = new Gaffa.Property({
+    update: function(view, value){
+        view.checkboxInput[value ? 'removeAttribute' : 'setAttribute']('disabled','disabled');
+    },
+    value: true
+});
+
 module.exports = Checkbox;
