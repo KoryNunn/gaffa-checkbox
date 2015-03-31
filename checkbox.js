@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var Gaffa = require('gaffa'),
     crel = require('crel');
@@ -11,24 +11,24 @@ Checkbox.prototype.render = function(){
     var view = this,
         label,
         checkbox,
+        content,
         renderedElement = crel('span',
+            checkbox = crel('input', {'type': 'checkbox'}),
             label = crel('label'),
-            checkbox = crel('input', {'type': 'checkbox'})
+            content = crel('span')
         );
 
     this.checkboxInput = checkbox;
     this.checkboxLabel = label;
 
-    checkbox.addEventListener(this.updateEventName || "change", function(event){
+    checkbox.addEventListener(this.updateEventName || 'change', function(event){
         view.checked.set(this.checked);
     });
     label.addEventListener('click', function(){
         checkbox.click();
     });
-    renderedElement.appendChild(checkbox);
-    renderedElement.appendChild(label);
 
-    this.views.content.element = label;
+    this.views.content.element = content;
 
     this.renderedElement = renderedElement;
 
